@@ -149,4 +149,7 @@ def start_game():
 
 
 if __name__ == '__main__':
+	print("Sample")
 	start_game()
+
+
