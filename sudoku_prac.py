@@ -21,51 +21,95 @@ def display_sudo(sudo_sample):
 def create_sudoku():
 	easy = [[[[0 for i in range(3)] for i in range(3)] for i in range(3)] for i in range(3)]
 
-	easy[0][0][0][0] = 5
-	easy[0][0][0][1] = 3
-	easy[0][0][1][0] = 6
-	easy[0][0][2][1] = 9
-	easy[0][0][2][2] = 8
+	# easy[0][0][0][0] = 5
+	# easy[0][0][0][1] = 3
+	easy[0][0][0][2] = 6
+	# easy[0][0][1][0] = 6
+	easy[0][0][1][1] = 3
+	easy[0][0][1][2] = 9
+	easy[0][0][2][0] = 5
+	# easy[0][0][2][1] = 9
+	# easy[0][0][2][2] = 8
 
-	easy[0][1][0][1] = 7
-	easy[0][1][1][0] = 1
-	easy[0][1][1][1] = 9
-	easy[0][1][1][2] = 5
+	easy[0][1][0][0] = 1
+	# easy[0][1][0][1] = 7
+	easy[0][1][0][2] = 2
+	# easy[0][1][1][0] = 1
+	easy[0][1][1][1] = 5
+	# easy[0][1][1][2] = 5
+	# easy[0][1][2][0] = 8
+	easy[0][1][2][1] = 4
+	easy[0][1][2][2] = 9
 
-	easy[0][2][2][1] = 6
+	easy[0][2][0][0] = 5
+	# easy[0][2][0][1] = 7
+	# easy[0][2][0][2] = 2
+	easy[0][2][1][0] = 1
+	easy[0][2][1][1] = 4
+	easy[0][2][1][2] = 2
+	# easy[0][2][2][0] = 8
+	# easy[0][2][2][1] = 4
+	# easy[0][2][2][2] = 8
 
-	easy[1][0][0][0] = 8
+	easy[1][0][0][0] = 9
 	# easy[1][0][0][1] = 7
-	easy[1][0][1][0] = 4
-	easy[1][0][2][0] = 7
+	easy[1][0][0][2] = 2
+	# easy[1][0][1][0] = 4
+	easy[1][0][1][1] = 8
+	# easy[1][0][1][2] = 4
+	easy[1][0][2][0] = 1
+	# easy[1][0][2][1] = 7
+	easy[1][0][2][2] = 3
 
-	easy[1][1][0][1] = 6
-	# easy[1][1][0][1] = 7
-	easy[1][1][1][0] = 8
-	easy[1][1][1][2] = 3
+	# easy[1][1][0][0] = 6
+	easy[1][1][0][1] = 3
+	# easy[1][1][0][2] = 7
+	# easy[1][1][1][0] = 8
+	# easy[1][1][1][1] = 8
+	# easy[1][1][1][2] = 3
 	# easy[1][1][2][0] = 7
-	easy[1][1][2][1] = 2
+	easy[1][1][2][1] = 6
+	# easy[1][1][2][2] = 2
 
-	easy[1][2][0][2] = 3
-	easy[1][2][1][2] = 1
+	easy[1][2][0][0] = 4
+	# easy[1][2][0][1] = 3
+	easy[1][2][0][2] = 1
+	# easy[1][2][1][0] = 1
+	easy[1][2][1][1] = 7
+	# easy[1][2][1][2] = 1
+	easy[1][2][2][0] = 8
 	# easy[1][2][2][1] = 1
-	easy[1][2][2][2] = 6
+	easy[1][2][2][2] = 9
 
-	easy[2][0][0][1] = 6
+	# easy[2][0][0][1] = 6
+	# easy[2][0][0][1] = 6
+	# easy[2][0][0][1] = 6
+	# easy[2][0][1][0] = 4
+	easy[2][0][1][1] = 5
+	easy[2][0][1][2] = 4
+	# easy[2][0][2][0] = 1
+	# # easy[2][0][2][1] = 7
+	easy[2][0][2][2] = 7
 
-	# easy[2][1][0][1] = 2
-	easy[2][1][1][0] = 4
-	easy[2][1][1][1] = 1
-	easy[2][1][1][2] = 9
-	easy[2][1][2][1] = 8
-	# easy[2][1][2][2] = 6
+	# easy[2][1][0][0] = 2
+	easy[2][1][0][1] = 1
+	# easy[2][1][0][2] = 4
+	# easy[2][1][1][0] = 4
+	# easy[2][1][1][1] = 1
+	# easy[2][1][1][2] = 9
+	easy[2][1][2][0] = 5
+	# easy[2][1][2][1] = 8
+	easy[2][1][2][2] = 3
 
-	easy[2][2][0][0] = 2
-	easy[2][2][0][1] = 8
-	# easy[2][2][1][1] = 3
-	easy[2][2][1][2] = 5
-	easy[2][2][2][1] = 7
-	easy[2][2][2][2] = 9
+	# easy[2][2][0][0] = 2
+	# easy[2][2][0][1] = 8
+	easy[2][2][0][2] = 5
+	easy[2][2][1][0] = 9
+	easy[2][2][1][1] = 1
+	# easy[2][2][1][2] = 5
+	easy[2][2][2][0] = 2
+	# easy[2][2][2][1] = 7
+	# easy[2][2][2][2] = 9
 
 	return easy
 
@@ -111,6 +155,7 @@ def checkOtherValues(sudo_sample2, i, j, k, l):
 def solve_game(sudo_sample1):
 	result = sudo_sample1
 	found = False
+	fill = False
 	# go one by one in each row
 	for i in range(3):
 		for k in range(3):
@@ -119,20 +164,21 @@ def solve_game(sudo_sample1):
 					if sudo_sample1[i][j][k][l] == 0:
 						result, found = checkOtherValues(sudo_sample1, i, j, k, l)
 					if found:
+						fill = True
 						os.system('cls')
 						display_sudo(result)
 
-	return result
+	return result, fill
 
 
 def start_game():
 	print("Let's start the Sudoku Game...")
-	time.sleep(2)
+	time.sleep(.5)
 	sudo_sample = create_sudoku()
 	print("Please Solve this Sudoku...")
-	time.sleep(1)
+	time.sleep(.5)
 	print("Coming in few seconds..")
-	time.sleep(3)
+	time.sleep(2)
 	os.system('cls')
 	display_sudo(sudo_sample)
 	print()
@@ -140,8 +186,11 @@ def start_game():
 	print("Let's start solving the sudoku")
 	check = True
 	while check:
-		sudo_sample = solve_game(sudo_sample)
-		check = zeroAvailable(sudo_sample)
+		sudo_sample, fill = solve_game(sudo_sample)
+		if not fill:
+			check = False
+		else:
+			check = zeroAvailable(sudo_sample)
 	time.sleep(1)
 	os.system('cls')
 	print("Your Final Solved sudoku is coming in few seconds.. ")
