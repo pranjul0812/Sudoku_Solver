@@ -3,8 +3,9 @@ import time
 
 
 def display_sudo(sudo_sample):
+
 	for i in range(3):
-		print("_ "*11)
+		print("_ " * 12)
 		for k in range(3):
 			for j in range(3):
 				for l in range(3):
@@ -13,58 +14,44 @@ def display_sudo(sudo_sample):
 					else:
 						print(str(sudo_sample[i][j][k][l]), end=" ")
 					if l == 2:
-						print("|", end="")
+						print("|", end=" ")
 			print()
-	print("_ "*11)
 
 
 def create_sudoku():
 	easy = [[[[0 for i in range(3)] for i in range(3)] for i in range(3)] for i in range(3)]
 
-	easy[0][0][1][0] = 6
+	easy[0][0][0][1] = 2
+	easy[0][0][1][0] = 5
 	easy[0][0][1][1] = 8
-	easy[0][0][2][0] = 1
-	easy[0][0][2][1] = 9
 
-	easy[0][1][0][0] = 2
-	easy[0][1][0][1] = 6
-	easy[0][1][1][1] = 7
-	easy[0][1][2][2] = 4
+	easy[0][1][0][0] = 6
+	easy[0][1][0][2] = 8
+	easy[0][1][1][2] = 9
+	easy[0][1][2][1] = 4
 
-	easy[0][2][0][0] = 7
-	easy[0][2][0][2] = 1
-	easy[0][2][1][1] = 9
-	easy[0][2][2][0] = 5
+	easy[0][2][1][0] = 7
 
-	easy[1][0][0][0] = 8
-	easy[1][0][0][1] = 2
-	easy[1][0][1][2] = 4
-	easy[1][0][2][1] = 5
+	easy[1][0][0][0] = 3
+	easy[1][0][0][1] = 7
+	easy[1][0][1][0] = 6
+	easy[1][0][2][2] = 8
 
-	easy[1][1][0][0] = 1
-	easy[1][1][1][0] = 6
-	easy[1][1][1][2] = 2
-	easy[1][1][2][2] = 3
+	easy[1][2][0][0] = 5
+	easy[1][2][1][2] = 4
+	easy[1][2][2][1] = 1
+	easy[1][2][2][2] = 3
 
-	easy[1][2][0][1] = 4
-	easy[1][2][1][0] = 9
-	easy[1][2][2][1] = 2
-	easy[1][2][2][2] = 8
+	easy[2][0][1][2] = 9
 
-	easy[2][0][0][2] = 9
-	easy[2][0][1][1] = 4
-	easy[2][0][2][0] = 7
-	easy[2][0][2][2] = 3
+	easy[2][1][0][1] = 2
+	easy[2][1][1][0] = 8
+	easy[2][1][2][0] = 3
+	easy[2][1][2][2] = 6
 
-	easy[2][1][0][0] = 3
-	easy[2][1][1][1] = 5
-	easy[2][1][2][1] = 1
-	easy[2][1][2][2] = 8
-
-	easy[2][2][0][1] = 7
-	easy[2][2][0][2] = 4
 	easy[2][2][1][1] = 3
 	easy[2][2][1][2] = 6
+	easy[2][2][2][1] = 9
 
 	return easy
 
@@ -117,9 +104,9 @@ def solve_game(sudo_sample1):
 				for l in range(3):
 					if sudo_sample1[i][j][k][l] == 0:
 						result, found = checkOtherValues(sudo_sample1, i, j, k, l)
-					if found:
-						os.system('cls')
-						display_sudo(result)
+					# if found:
+					# 	os.system('cls')
+					# 	display_sudo(result)
 
 	return result
 
@@ -149,7 +136,13 @@ def start_game():
 
 
 if __name__ == '__main__':
-	print("Sample")
+	# sudo_sample = create_sudoku()
+	# print("Please Solve this Sudoku...")
+	# time.sleep(1)
+	# print("Coming in few seconds..")
+	# time.sleep(3)
+	# os.system('cls')
+	# display_sudo(sudo_sample)
 	start_game()
 
 
