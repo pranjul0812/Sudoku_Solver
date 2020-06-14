@@ -21,94 +21,94 @@ def display_sudo(sudo_sample):
 def create_sudoku():
 	easy = [[[[0 for i in range(3)] for i in range(3)] for i in range(3)] for i in range(3)]
 
-	# easy[0][0][0][0] = 5
-	# easy[0][0][0][1] = 3
-	easy[0][0][0][2] = 6
-	# easy[0][0][1][0] = 6
-	easy[0][0][1][1] = 3
-	easy[0][0][1][2] = 9
-	easy[0][0][2][0] = 5
-	# easy[0][0][2][1] = 9
-	# easy[0][0][2][2] = 8
+	# # easy[0][0][0][0] = 5
+	# easy[0][0][0][1] = 2
+	easy[0][0][0][2] = 7
+	easy[0][0][1][0] = 6
+	# easy[0][0][1][1] = 2
+	# easy[0][0][1][2] = 9
+	easy[0][0][2][0] = 9
+	# easy[0][0][2][1] = 6
+	easy[0][0][2][2] = 5
 
-	easy[0][1][0][0] = 1
+	easy[0][1][0][0] = 9
 	# easy[0][1][0][1] = 7
-	easy[0][1][0][2] = 2
-	# easy[0][1][1][0] = 1
+	# easy[0][1][0][2] = 2
+	easy[0][1][1][0] = 2
 	easy[0][1][1][1] = 5
-	# easy[0][1][1][2] = 5
+	# easy[0][1][1][2] = 4
 	# easy[0][1][2][0] = 8
-	easy[0][1][2][1] = 4
-	easy[0][1][2][2] = 9
+	easy[0][1][2][1] = 8
+	# easy[0][1][2][2] = 9
 
-	easy[0][2][0][0] = 5
+	# easy[0][2][0][0] = 5
 	# easy[0][2][0][1] = 7
-	# easy[0][2][0][2] = 2
-	easy[0][2][1][0] = 1
-	easy[0][2][1][1] = 4
-	easy[0][2][1][2] = 2
+	easy[0][2][0][2] = 8
+	easy[0][2][1][0] = 9
+	# easy[0][2][1][1] = 4
+	# easy[0][2][1][2] = 2
 	# easy[0][2][2][0] = 8
 	# easy[0][2][2][1] = 4
-	# easy[0][2][2][2] = 8
+	# easy[0][2][2][2] = 9
 
-	easy[1][0][0][0] = 9
-	# easy[1][0][0][1] = 7
-	easy[1][0][0][2] = 2
-	# easy[1][0][1][0] = 4
-	easy[1][0][1][1] = 8
-	# easy[1][0][1][2] = 4
-	easy[1][0][2][0] = 1
-	# easy[1][0][2][1] = 7
-	easy[1][0][2][2] = 3
+	easy[1][0][0][0] = 1
+	# easy[1][0][0][1] = 9
+	# easy[1][0][0][2] = 2
+	# easy[1][0][1][0] = 6
+	# easy[1][0][1][1] = 8
+	# easy[1][0][1][2] = 7
+	# easy[1][0][2][0] = 1
+	# easy[1][0][2][1] = 8
+	easy[1][0][2][2] = 4
 
-	# easy[1][1][0][0] = 6
-	easy[1][1][0][1] = 3
-	# easy[1][1][0][2] = 7
+	# easy[1][1][0][0] = 1
+	# easy[1][1][0][1] = 2
+	# easy[1][1][0][2] = 8
 	# easy[1][1][1][0] = 8
-	# easy[1][1][1][1] = 8
-	# easy[1][1][1][2] = 3
+	easy[1][1][1][1] = 6
+	easy[1][1][1][2] = 2
 	# easy[1][1][2][0] = 7
-	easy[1][1][2][1] = 6
-	# easy[1][1][2][2] = 2
+	# easy[1][1][2][1] = 6
+	# easy[1][1][2][2] = 3
 
-	easy[1][2][0][0] = 4
-	# easy[1][2][0][1] = 3
-	easy[1][2][0][2] = 1
-	# easy[1][2][1][0] = 1
-	easy[1][2][1][1] = 7
-	# easy[1][2][1][2] = 1
-	easy[1][2][2][0] = 8
-	# easy[1][2][2][1] = 1
-	easy[1][2][2][2] = 9
+	easy[1][2][0][0] = 8
+	easy[1][2][0][1] = 6
+	easy[1][2][0][2] = 5
+	easy[1][2][1][0] = 3
+	# easy[1][2][1][1] = 7
+	easy[1][2][1][2] = 4
+	# easy[1][2][2][0] = 1
+	easy[1][2][2][1] = 2
+	# easy[1][2][2][2] = 3
 
 	# easy[2][0][0][1] = 6
+	# easy[2][0][0][1] = 7
 	# easy[2][0][0][1] = 6
-	# easy[2][0][0][1] = 6
-	# easy[2][0][1][0] = 4
-	easy[2][0][1][1] = 5
-	easy[2][0][1][2] = 4
-	# easy[2][0][2][0] = 1
-	# # easy[2][0][2][1] = 7
-	easy[2][0][2][2] = 7
+	easy[2][0][1][0] = 8
+	easy[2][0][1][1] = 7
+	# easy[2][0][1][2] = 9
+	easy[2][0][2][0] = 3
+	easy[2][0][2][1] = 4
+	# easy[2][0][2][2] = 7
 
-	# easy[2][1][0][0] = 2
-	easy[2][1][0][1] = 1
+	easy[2][1][0][0] = 8
+	# easy[2][1][0][1] = 5
 	# easy[2][1][0][2] = 4
-	# easy[2][1][1][0] = 4
-	# easy[2][1][1][1] = 1
+	easy[2][1][1][0] = 3
+	easy[2][1][1][1] = 4
 	# easy[2][1][1][2] = 9
-	easy[2][1][2][0] = 5
+	# easy[2][1][2][0] = 3
 	# easy[2][1][2][1] = 8
-	easy[2][1][2][2] = 3
+	easy[2][1][2][2] = 6
 
 	# easy[2][2][0][0] = 2
 	# easy[2][2][0][1] = 8
-	easy[2][2][0][2] = 5
-	easy[2][2][1][0] = 9
-	easy[2][2][1][1] = 1
-	# easy[2][2][1][2] = 5
-	easy[2][2][2][0] = 2
-	# easy[2][2][2][1] = 7
+	# easy[2][2][0][2] = 5
+	# easy[2][2][1][0] = 2
+	# easy[2][2][1][1] = 3
+	# easy[2][2][1][2] = 6
+	# easy[2][2][2][0] = 6
+	# easy[2][2][2][1] = 1
 	# easy[2][2][2][2] = 9
 
 	return easy
@@ -209,8 +209,8 @@ def solve_game_level2(sudo_sample):
 			time.sleep(3)
 			if change:
 				fill = True
-				# os.system('cls')
-				# display_sudo(sudo_sample)
+				os.system('cls')
+				display_sudo(sudo_sample)
 	return sudo_sample, fill
 
 
@@ -227,8 +227,8 @@ def solve_game_level1(sudo_sample1):
 						result, found = checkOtherValues(sudo_sample1, i, j, k, l)
 					if found:
 						fill = True
-						# os.system('cls')
-						# display_sudo(result)
+						os.system('cls')
+						display_sudo(result)
 
 	return result, fill
 
@@ -253,21 +253,21 @@ def start_game():
 			check = False
 		else:
 			check = zeroAvailable(sudo_sample)
-	# os.system('cls')
-	# print("Your Level1 Solved sudoku is coming in few seconds.. ")
-	# time.sleep(.5)
-	# display_sudo(sudo_sample)
-	# time.sleep(1)
-	while not check:
+	if zeroAvailable(sudo_sample):
+		os.system('cls')
+		print("Your Level1 Solved sudoku is.. ")
+		time.sleep(.5)
+		display_sudo(sudo_sample)
+		time.sleep(1)
+	while zeroAvailable(sudo_sample):
 		sudo_sample, fill = solve_game_level2(sudo_sample)
 		if not fill:
-			check = True
-		else:
-			check = not zeroAvailable(sudo_sample)
+			break
+
 	time.sleep(1)
 	os.system('cls')
-	print("Your Final Solved sudoku is coming in few seconds.. ")
-	time.sleep(2)
+	print("Your Final Solved sudoku is.. ")
+	time.sleep(.5)
 	display_sudo(sudo_sample)
 
 
