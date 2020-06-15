@@ -1,6 +1,6 @@
 from selenium import webdriver
 import time
-from sudoku import sudoku_prac as sp
+from Phase2_prac.sudoku import sudoku_prac as sp
 from selenium.webdriver.common.by import By
 
 
