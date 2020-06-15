@@ -1,9 +1,17 @@
 import os
 import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+'''Steps We Will Follow:-
+1. We will read an incomplete sudoku from a website.
+2. Create a function for  displaying the sudoku from a website.
+3. Start solving sudoku and when found a cell to be filled with appropriate number, display the updated sudoku.
+4. Once solved display the final sudoku.'''
 
 
+# To display sudoku
 def display_sudo(sudo_sample):
-
 	for i in range(3):
 		print("_ " * 12)
 		for k in range(3):
@@ -18,102 +26,36 @@ def display_sudo(sudo_sample):
 			print()
 
 
+# read sudoku from web and return in the form of list.(fill 0 on all the empty cells)
 def create_sudoku():
-	easy = [[[[0 for i in range(3)] for i in range(3)] for i in range(3)] for i in range(3)]
+	sudo = [[[[0 for i in range(3)] for i in range(3)] for i in range(3)] for i in range(3)]
+	driverLocation = "D:/Tools/Selenium/chromedriver.exe"
+	driver = webdriver.Chrome(executable_path=driverLocation)
+	driver.maximize_window()
+	driver.implicitly_wait(3)
+	url = "https://www.websudoku.com/"
+	driver.get(url)
+	driver.switch_to.frame(0)
+	cells_elements = driver.find_elements(By.XPATH, "//table[@id='puzzle_grid']//tr//td//input")
+	values = []
+	for cell in cells_elements:
+		try:
+			values.append(int(cell.get_attribute('value')))
+		except:
+			values.append(0)
+	index = 0
+	for i in range(3):
+		for k in range(3):
+			for j in range(3):
+				for l in range(3):
+					if sudo[i][j][k][l] != values[index]:
+						sudo[i][j][k][l] = values[index]
+					index += 1
 
-	# # easy[0][0][0][0] = 5
-	# easy[0][0][0][1] = 2
-	easy[0][0][0][2] = 7
-	easy[0][0][1][0] = 6
-	# easy[0][0][1][1] = 2
-	# easy[0][0][1][2] = 9
-	easy[0][0][2][0] = 9
-	# easy[0][0][2][1] = 6
-	easy[0][0][2][2] = 5
-
-	easy[0][1][0][0] = 9
-	# easy[0][1][0][1] = 7
-	# easy[0][1][0][2] = 2
-	easy[0][1][1][0] = 2
-	easy[0][1][1][1] = 5
-	# easy[0][1][1][2] = 4
-	# easy[0][1][2][0] = 8
-	easy[0][1][2][1] = 8
-	# easy[0][1][2][2] = 9
-
-	# easy[0][2][0][0] = 5
-	# easy[0][2][0][1] = 7
-	easy[0][2][0][2] = 8
-	easy[0][2][1][0] = 9
-	# easy[0][2][1][1] = 4
-	# easy[0][2][1][2] = 2
-	# easy[0][2][2][0] = 8
-	# easy[0][2][2][1] = 4
-	# easy[0][2][2][2] = 9
-
-	easy[1][0][0][0] = 1
-	# easy[1][0][0][1] = 9
-	# easy[1][0][0][2] = 2
-	# easy[1][0][1][0] = 6
-	# easy[1][0][1][1] = 8
-	# easy[1][0][1][2] = 7
-	# easy[1][0][2][0] = 1
-	# easy[1][0][2][1] = 8
-	easy[1][0][2][2] = 4
-
-	# easy[1][1][0][0] = 1
-	# easy[1][1][0][1] = 2
-	# easy[1][1][0][2] = 8
-	# easy[1][1][1][0] = 8
-	easy[1][1][1][1] = 6
-	easy[1][1][1][2] = 2
-	# easy[1][1][2][0] = 7
-	# easy[1][1][2][1] = 6
-	# easy[1][1][2][2] = 3
-
-	easy[1][2][0][0] = 8
-	easy[1][2][0][1] = 6
-	easy[1][2][0][2] = 5
-	easy[1][2][1][0] = 3
-	# easy[1][2][1][1] = 7
-	easy[1][2][1][2] = 4
-	# easy[1][2][2][0] = 1
-	easy[1][2][2][1] = 2
-	# easy[1][2][2][2] = 3
-
-	# easy[2][0][0][1] = 6
-	# easy[2][0][0][1] = 7
-	# easy[2][0][0][1] = 6
-	easy[2][0][1][0] = 8
-	easy[2][0][1][1] = 7
-	# easy[2][0][1][2] = 9
-	easy[2][0][2][0] = 3
-	easy[2][0][2][1] = 4
-	# easy[2][0][2][2] = 7
-
-	easy[2][1][0][0] = 8
-	# easy[2][1][0][1] = 5
-	# easy[2][1][0][2] = 4
-	easy[2][1][1][0] = 3
-	easy[2][1][1][1] = 4
-	# easy[2][1][1][2] = 9
-	# easy[2][1][2][0] = 3
-	# easy[2][1][2][1] = 8
-	easy[2][1][2][2] = 6
-
-	# easy[2][2][0][0] = 2
-	# easy[2][2][0][1] = 8
-	# easy[2][2][0][2] = 5
-	# easy[2][2][1][0] = 2
-	# easy[2][2][1][1] = 3
-	# easy[2][2][1][2] = 6
-	# easy[2][2][2][0] = 6
-	# easy[2][2][2][1] = 1
-	# easy[2][2][2][2] = 9
-
-	return easy
+	return sudo
 
 
+# Check if sudoku has any cell with zero >> used to continue/stop solving the sudoku
 def zeroAvailable(lst):
 	for i in range(3):
 		for k in range(3):
@@ -124,9 +66,21 @@ def zeroAvailable(lst):
 	return False
 
 
+# Check if sudoku has any cell with zero within a block(considering 3*3 a block) >> used in level2 solution
+def zeroAvailableInBlock(lst, i, j):
+	for k in range(3):
+		for l in range(3):
+			if lst[i][j][k][l] == 0:
+				return True
+	return False
+
+
+# for each cell check other values(horizontal/vertical/in the block)
+# Check if there can be only one solution(number) for that cell seeing above values
+# Used as a level1 solution
 def checkOtherValues(sudo_sample2, i, j, k, l):
 	expected_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-	found = False
+	found = 0
     # Check horizontal values
 	for outer_col in range(3):
 		for inner_col in range(3):
@@ -147,11 +101,15 @@ def checkOtherValues(sudo_sample2, i, j, k, l):
 
 	if len(expected_list) == 1:
 		sudo_sample2[i][j][k][l] = expected_list[0]
-		found = True
+		found = expected_list[0]
 
 	return sudo_sample2, found
 
 
+# In a block(3*3) check how many numbers are missing from 1-9 and which cells are empty
+# now check each number at each empty cells
+# If there is any number which is possible only at one empty place in that block, update the sudoku
+# Level2 solution
 def checkBlock(lst, i, j):
 	expected_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 	zero_positions = []
@@ -162,8 +120,6 @@ def checkBlock(lst, i, j):
 				expected_list.remove(lst[i][j][k][l])
 			else:
 				zero_positions.append([k, l])
-	# print(expected_list)
-	# print(zero_positions)
 	for item in expected_list:
 		possible_positions = []
 		for position in zero_positions:
@@ -180,6 +136,11 @@ def checkBlock(lst, i, j):
 	return lst, change
 
 
+# Used in level2 solution
+# Called by function checkBlock
+# for a particular cell in a block check if that number can be filled in that cell or not
+# Check if that number exist in that column or row
+# if Yes return False else return True.
 def checkPossibility(lst, i, j, position, item):
 	k = position[0]
 	l = position[1]
@@ -189,7 +150,7 @@ def checkPossibility(lst, i, j, position, item):
 			# print(lst[o_row][j][i_row][l], end=" ")
 			if lst[o_row][j][i_row][l] == item:
 				return False
-	# print()
+
 	# check in horizontal values:
 	for o_col in range(3):
 		for i_col in range(3):
@@ -200,13 +161,17 @@ def checkPossibility(lst, i, j, position, item):
 	return True
 
 
+# Level2 Solution
+# To iterate over each block
+# It is called when sudoku can't be solved after level1 solution
 def solve_game_level2(sudo_sample):
 	# go in each block and check if we can fill any values
+	change = False
 	fill = False
 	for i in range(3):
 		for j in range(3):
-			sudo_sample, change = checkBlock(sudo_sample, i, j)
-			time.sleep(3)
+			if zeroAvailableInBlock(sudo_sample, i, j):
+				sudo_sample, change = checkBlock(sudo_sample, i, j)
 			if change:
 				fill = True
 				os.system('cls')
@@ -214,6 +179,7 @@ def solve_game_level2(sudo_sample):
 	return sudo_sample, fill
 
 
+# Level1 Solution, it iterates over each cell and try to solve sudoku
 def solve_game_level1(sudo_sample1):
 	result = sudo_sample1
 	found = False
@@ -225,7 +191,7 @@ def solve_game_level1(sudo_sample1):
 				for l in range(3):
 					if sudo_sample1[i][j][k][l] == 0:
 						result, found = checkOtherValues(sudo_sample1, i, j, k, l)
-					if found:
+					if found != 0:
 						fill = True
 						os.system('cls')
 						display_sudo(result)
@@ -233,19 +199,8 @@ def solve_game_level1(sudo_sample1):
 	return result, fill
 
 
-def start_game():
-	print("Let's start the Sudoku Game...")
-	time.sleep(.5)
-	sudo_sample = create_sudoku()
-	print("Please Solve this Sudoku...")
-	time.sleep(.5)
-	print("Coming in few seconds..")
-	time.sleep(2)
-	os.system('cls')
-	display_sudo(sudo_sample)
-	print()
-	time.sleep(1)
-	print("Let's start solving the sudoku")
+# start solving the sudoku and provide the final result
+def start_game(sudo_sample):
 	check = True
 	while check:
 		sudo_sample, fill = solve_game_level1(sudo_sample)
@@ -272,13 +227,17 @@ def start_game():
 
 
 if __name__ == '__main__':
-	# sudo_sample = create_sudoku()
-	# print("Please Solve this Sudoku...")
-	# time.sleep(1)
-	# print("Coming in few seconds..")
-	# time.sleep(3)
-	# os.system('cls')
-	# display_sudo(sudo_sample)
-	start_game()
+	print("Let's start the Sudoku Game...")
+	time.sleep(.5)
+	print("Coming in few seconds..")
+	sudo_sample = create_sudoku()
+	print("Please Solve this Sudoku...")
+	time.sleep(.5)
+	os.system('cls')
+	display_sudo(sudo_sample)
+	print()
+	time.sleep(1)
+	print("Let's start solving the sudoku")
+	start_game(sudo_sample)
 
 
