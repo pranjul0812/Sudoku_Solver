@@ -14,7 +14,7 @@ class WebSudoku:
 	def __init__(self, driver):
 		self.driver = driver
 		self.driver.maximize_window()
-		self.driver.implicitly_wait(3)
+		# self.driver.implicitly_wait(1)
 		url = "https://www.websudoku.com/"
 		self.driver.get(url)
 
