@@ -107,6 +107,8 @@ class WebSudoku:
 
 
 driverLocation = "D:/Tools/Selenium/chromedriver.exe"
+# give path where you have saved the driver.exe
+
 driver = webdriver.Chrome(executable_path=driverLocation)
 web_sudo = WebSudoku(driver)
 web_sudo.game()
